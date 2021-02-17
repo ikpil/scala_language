@@ -10,6 +10,8 @@ object Program {
 
     immutableMap()
     mutableMap()
+
+    printArgs(Array("1", "2", "3"))
   }
 
   // 변경 불가능한 컬렉션
@@ -51,4 +53,23 @@ object Program {
     println(test(2))
   }
 
+  // 반복문을 돌 릴 경우, 스칼라가 권장하는 형태
+  def printArgs(args: Array[String]): Unit = {
+    // 전통적인 방법
+    {
+      var i = 0;
+      while (i < args.length) {
+        println(args(i))
+        i += 1;
+      }
+    }
+
+    // 스칼라 같은 함수형 언어에서 방법 1
+    for (arg <- args)
+      println(arg)
+
+    // 또는 방법 2
+    args.foreach(println)
+
+  }
 }
