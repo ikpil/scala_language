@@ -12,6 +12,7 @@ object Program {
     mutableMap()
 
     printArgs(Array("1", "2", "3"))
+    println(formatArgs(Array("6", "7", "8", "9")))
   }
 
   // 변경 불가능한 컬렉션
@@ -70,6 +71,9 @@ object Program {
 
     // 또는 방법 2
     args.foreach(println)
-
   }
+
+  // printArgs 의 경우, println 의 사이드이펙트를 가지고 있다.
+  // 사이드 이펙트를 더 줄이려면, 연산 결과를 리턴하여 처리해야 한다.
+  def formatArgs(args: Array[String]) = args.mkString("\n")
 }
