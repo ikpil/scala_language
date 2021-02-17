@@ -30,18 +30,20 @@ object Program {
 
   // 변경 불가능 맵
   def immutableMap(): Unit = {
-    var test = Map(
+    val test = Map(
       1 -> "Go to island.",
       2 -> "Find big X on ground.",
       3 -> "Dig",
     )
+
+    //test += (4 -> "test")
 
     println(test(1))
   }
 
   // 변경 가능한 맵
   def mutableMap(): Unit = {
-    var test = mutable.Map[Int, String]();
+    val test = mutable.Map[Int, String]();
     test += (1 -> "Go to island.")
     test += (2 -> "Find big X on ground.")
     test += (3 -> "Dig")
