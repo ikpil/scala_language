@@ -1,7 +1,8 @@
 package com.ikpil.scala.tutorial_3
 
 import scala.collection.immutable.HashSet
-import scala.collection.mutable;
+import scala.collection.mutable
+import scala.io.Source;
 
 object Program {
   def main(args: Array[String]): Unit = {
@@ -13,6 +14,9 @@ object Program {
 
     printArgs(Array("1", "2", "3"))
     println(formatArgs(Array("6", "7", "8", "9")))
+
+    printFile("./README.md")
+    printFile2("./README.md")
   }
 
   // 변경 불가능한 컬렉션
@@ -76,4 +80,38 @@ object Program {
   // printArgs 의 경우, println 의 사이드이펙트를 가지고 있다.
   // 사이드 이펙트를 더 줄이려면, 연산 결과를 리턴하여 처리해야 한다.
   def formatArgs(args: Array[String]) = args.mkString("\n")
+
+  // 파일을 출력하는 정통적인 방법
+  def printFile(args: String): Unit = {
+    val lines = Source.fromFile(args).getLines().toList
+
+    var maxWidth = 0
+    for (line <- lines)
+      maxWidth = maxWidth.max(widthOfLength(line))
+
+    for (line <- lines) {
+      val numSpaces = maxWidth - widthOfLength(line)
+      val padding = " " * numSpaces
+      println(padding + line.length + " | " + line)
+    }
+  }
+
+  // 파일을 출력하는 함수형적인 방법
+  def printFile2(args: String): Unit = {
+    val lines = Source.fromFile(args).getLines().toList
+
+    val longestLine = lines.reduceLeft(
+      (a, b) => if (a.length > b.length) a else b
+    )
+
+    val maxWidth = widthOfLength(longestLine)
+
+    for (line <- lines) {
+      val numSpaces = maxWidth - widthOfLength(line)
+      val padding = " " * numSpaces
+      println(padding + line.length + " | " + line)
+    }
+  }
+
+  def widthOfLength(s: String) = s.length.toString.length
 }
