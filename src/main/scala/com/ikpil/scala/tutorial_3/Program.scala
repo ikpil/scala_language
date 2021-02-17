@@ -7,6 +7,9 @@ object Program {
   def main(args: Array[String]): Unit = {
     immutableSet()
     mutableSet()
+
+    immutableMap()
+    mutableMap()
   }
 
   // 변경 불가능한 컬렉션
@@ -24,4 +27,26 @@ object Program {
     //movieSet.+=("Shrek")
     println(movieSet)
   }
+
+  // 변경 불가능 맵
+  def immutableMap(): Unit = {
+    var test = Map(
+      1 -> "Go to island.",
+      2 -> "Find big X on ground.",
+      3 -> "Dig",
+    )
+
+    println(test(1))
+  }
+
+  // 변경 가능한 맵
+  def mutableMap(): Unit = {
+    var test = mutable.Map[Int, String]();
+    test += (1 -> "Go to island.")
+    test += (2 -> "Find big X on ground.")
+    test += (3 -> "Dig")
+
+    println(test(2))
+  }
+
 }
