@@ -2,10 +2,9 @@ package com.ikpil.scala
 
 import com.ikpil.scala.sample.ChecksumAccumulator
 
-object Tutorial004 {
-  def main(args: Array[String]): Unit = {
-    sampleClass();
-  }
+object Tutorial004 extends App {
+  sampleClass()
+  sampleStandalone()
 
   // 클래스를 생성하는 방법을 다룬다
   def sampleClass(): Unit = {
@@ -19,5 +18,10 @@ object Tutorial004 {
 
     println(acc.checksum())
     println(csa.checksum())
+  }
+
+  def sampleStandalone(): Unit = {
+    for (s <- Array("test1", "test2", "test1"))
+      println(ChecksumAccumulator.calculate(s))
   }
 }
