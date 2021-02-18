@@ -1,10 +1,10 @@
-package com.ikpil.scala.tutorial_3
+package com.ikpil.scala
 
 import scala.collection.immutable.HashSet
 import scala.collection.mutable
-import scala.io.Source;
+import scala.io.Source
 
-object Program {
+object Tutorial003 {
   def main(args: Array[String]): Unit = {
     immutableSet()
     mutableSet()

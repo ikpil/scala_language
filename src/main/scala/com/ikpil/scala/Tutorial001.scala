@@ -1,6 +1,6 @@
-package com.ikpil.scala.tutorial_1
+package com.ikpil.scala
 
-object Program {
+object Tutorial001 {
   def main(args: Array[String]): Unit = {
     println("hello world");
   }
