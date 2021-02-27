@@ -9,12 +9,19 @@ object Tutorial006 extends App {
   val y = new Rational(2, 3)
   println(y)
 
+  println("연산자 정의가 작동 되는지 확인")
   val z1 = x + y
-  println(z1)
-
   val z2 = x * y
+  println(z1)
   println(z2)
 
+  println("연산자 우선 순위 확인")
+  val z3 = (z1 + z2) * x
+  val z4 = z1 + z2 * x
+  println(z3)
+  println(z3)
+
+  println("클래스 메소드 호출 확인")
   val c = x lessThan y
   println(c)
 
