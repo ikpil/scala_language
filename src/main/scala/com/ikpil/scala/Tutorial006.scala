@@ -3,10 +3,12 @@ package com.ikpil.scala
 import com.ikpil.scala.sample.Rational
 
 object Tutorial006 extends App {
-  val x = new Rational(1, 3)
+  val x = new Rational(1, 2)
   println(x)
-  val y = new Rational(5, 7)
+
+  val y = new Rational(2, 3)
   println(y)
-  //  val z = new Rational(5, 0)
-  //  println(z)
+
+  val z = x add y
+  println(z)
 }
