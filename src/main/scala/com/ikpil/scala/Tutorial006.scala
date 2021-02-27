@@ -17,4 +17,7 @@ object Tutorial006 extends App {
 
   val three = new Rational(3);
   println(three)
+
+  val gcd = new Rational(66, 42)
+  println(gcd)
 }
