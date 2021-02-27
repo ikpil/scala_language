@@ -11,4 +11,10 @@ object Tutorial006 extends App {
 
   val z = x add y
   println(z)
+
+  val c = x lessThan y
+  println(c)
+
+  val three = new Rational(3);
+  println(three)
 }
