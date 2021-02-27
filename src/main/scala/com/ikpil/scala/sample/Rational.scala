@@ -12,10 +12,16 @@ class Rational(n: Int, d: Int) {
 
   override def toString = number + "/" + denom
 
-  // add 호출시 상수형으로 만들기 위해서 add 의 결과를 새로운 Rational 값으로 해야 한다.
-  def add(that: Rational): Rational = new Rational(
+  // add 이름을 + 연사자 메소드로 이름을 변경했다.
+  def +(that: Rational): Rational = new Rational(
     number * that.denom + that.number * denom, denom * that.denom
   )
+
+  // * 연산자 메소드를 생성했다
+  def *(that: Rational): Rational = new Rational(
+    number * that.number, denom * that.denom
+  )
+
 
   def lessThan(that: Rational): Boolean =
     number * that.denom < that.number * denom

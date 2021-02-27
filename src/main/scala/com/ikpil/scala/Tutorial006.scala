@@ -9,8 +9,11 @@ object Tutorial006 extends App {
   val y = new Rational(2, 3)
   println(y)
 
-  val z = x add y
-  println(z)
+  val z1 = x + y
+  println(z1)
+
+  val z2 = x * y
+  println(z2)
 
   val c = x lessThan y
   println(c)
