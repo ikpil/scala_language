@@ -14,14 +14,40 @@ class Rational(n: Int, d: Int) {
 
   // add 이름을 + 연사자 메소드로 이름을 변경했다.
   def +(that: Rational): Rational = new Rational(
-    number * that.denom + that.number * denom, denom * that.denom
+    number * that.denom + that.number * denom,
+    denom * that.denom
   )
 
-  // * 연산자 메소드를 생성했다
+  def +(i: Int): Rational = new Rational(
+    number + i * denom,
+    denom
+  )
+
+  def -(that: Rational): Rational = new Rational(
+    number * that.denom - that.number * denom,
+    denom * that.denom
+  )
+
+  def -(i: Int): Rational = new Rational(
+    number - i * denom,
+    denom
+  )
+
   def *(that: Rational): Rational = new Rational(
     number * that.number, denom * that.denom
   )
 
+  def *(i: Int): Rational = new Rational(
+    number * i, denom
+  )
+
+  def /(that: Rational): Rational = new Rational(
+    number * that.denom, denom * that.number
+  )
+
+  def /(i: Int): Rational = new Rational(
+    number, denom * i
+  )
 
   def lessThan(that: Rational): Boolean =
     number * that.denom < that.number * denom
