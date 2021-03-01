@@ -10,7 +10,9 @@ object Tutorial007 extends App {
   //  differentAssign()
   // checkFor()
   // grep(".*gcd.*")
-  testException()
+  // testException()
+  //checkMatch(Array("hi"))
+  compareBreakOrContinue()
 
   // 명령형 언어와 스칼라의 if 차이점
   def differentIf(): Unit = {
@@ -182,5 +184,38 @@ object Tutorial007 extends App {
     }
 
     println(friend)
+  }
+
+  def compareBreakOrContinue(): Unit = {
+    val x = checkBreakOrContinue(Array("-ikpil.scala", "ikpil.scala"))
+
+    val y = searchForm(Array("-ikpil.scala", "ikpil.scala"), 0)
+
+    println("compare x:" + x + "y:" + y)
+  }
+
+  // scala 에서는 break, continue 가 없다. 그러므로 어떤 요소를 찾으면 탈출해야 할 때 다음 처럼 작성해야 한다.
+  def checkBreakOrContinue(args: Array[String]): Int = {
+    var i = 0
+    var foundIt = -1
+
+    while (i < args.length && 0 > foundIt) {
+      if (!args(i).startsWith("-")) {
+        if (args(i).endsWith(".scala"))
+          foundIt = i
+      }
+
+      i = i + 1
+    }
+
+    foundIt
+  }
+
+  // checkBreakOrContinue 을 재귀로 만들면, 보다 편하게 코드 작성이 가능하다
+  def searchForm(args: Array[String], i: Int): Int = {
+    if (i >= args.length) -1
+    else if (args(i).startsWith("-")) searchForm(args, i + 1)
+    else if (args(i).endsWith(".scala")) i
+    else searchForm(args, i + 1)
   }
 }
