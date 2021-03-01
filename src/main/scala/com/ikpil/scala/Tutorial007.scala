@@ -170,4 +170,17 @@ object Tutorial007 extends App {
       throw new RuntimeException("n must be even") // 이 부분이 이상한데, 다른 언어에서는 리턴타입에 맞게 설정해야 하지만 스칼라에서는 Nothing 으로 처리 된다
   }
 
+  // scala 에서 switch 가 match 로 대체되며
+  // match 는 상수라면 문자열도 되는 것을 확인한다
+  def checkMatch(args: Array[String]): Unit = {
+    val firstArg = if (args.length > 0) args(0) else ""
+    val friend = firstArg match {
+      case "salt" => "paper"
+      case "chips" => "salsa"
+      case "eggs" => "bacon"
+      case _ => "huh?"
+    }
+
+    println(friend)
+  }
 }
