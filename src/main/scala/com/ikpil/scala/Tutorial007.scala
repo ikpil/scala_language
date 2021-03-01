@@ -1,6 +1,6 @@
 package com.ikpil.scala
 
-import java.io.File
+import java.io.{File, IOException}
 import scala.io.StdIn.readLine
 
 object Tutorial007 extends App {
@@ -9,7 +9,8 @@ object Tutorial007 extends App {
   //  checkDoWhile()
   //  differentAssign()
   // checkFor()
-  grep(".*gcd.*")
+  // grep(".*gcd.*")
+  testException()
 
   // 명령형 언어와 스칼라의 if 차이점
   def differentIf(): Unit = {
@@ -134,4 +135,39 @@ object Tutorial007 extends App {
       trimmed = line.trim
       if trimmed.matches(".*for.*")
     } yield trimmed.length
+
+  def testException(): Unit = {
+    // 이 함수의 결과는 finally 가 있음에도 1이 될 것이다.
+    val s = checkTryCatchFinally()
+    println(s)
+  }
+
+  // 자바와 스칼라의 exception try-catch-finally 를 알 수 있다.
+  def checkTryCatchFinally(): Int = {
+    // 스칼라의 try-catch 의 결과는 값이다. 이 부분이 자바랑 다르다
+    try {
+      // try 의 결과는 값이다.
+      throwException()
+      1
+    } catch {
+      case ex: RuntimeException => 2
+      case ex: IndexOutOfBoundsException => 3
+      case ex: IOException => 4
+    } finally {
+      // 는 결과가 값이 아니다.
+      2
+    }
+
+  }
+
+  def throwException(): Unit = {
+    // 예외 발생시키는 방법
+    // throw new IllegalArgumentException
+    val n = 4;
+    if (n % 2 == 0)
+      n / 2
+    else
+      throw new RuntimeException("n must be even") // 이 부분이 이상한데, 다른 언어에서는 리턴타입에 맞게 설정해야 하지만 스칼라에서는 Nothing 으로 처리 된다
+  }
+
 }
