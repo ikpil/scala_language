@@ -2,6 +2,7 @@ package com.ikpil.scala
 
 import com.ikpil.scala.sample.Rational
 
+// 함수형 객체에 대해서 알아본다
 object Tutorial006 extends App {
   // 암시적 타입 변환
   implicit def intToRational(x: Int): Rational = new Rational(x)

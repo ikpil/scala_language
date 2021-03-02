@@ -4,6 +4,7 @@ import scala.collection.immutable.HashSet
 import scala.collection.mutable
 import scala.io.Source
 
+// 이 튜토리얼은 스칼라에서 배열/리스트/튜플/집합/맵등을 어떻게 사용하는지 알아 본다
 object Tutorial003 {
   def main(args: Array[String]): Unit = {
     immutableSet()
