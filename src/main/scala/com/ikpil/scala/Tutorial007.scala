@@ -12,7 +12,8 @@ object Tutorial007 extends App {
   // grep(".*gcd.*")
   // testException()
   //checkMatch(Array("hi"))
-  compareBreakOrContinue()
+  //compareBreakOrContinue()
+  println(multiTable())
 
   // 명령형 언어와 스칼라의 if 차이점
   def differentIf(): Unit = {
@@ -218,4 +219,26 @@ object Tutorial007 extends App {
     else if (args(i).endsWith(".scala")) i
     else searchForm(args, i + 1)
   }
+
+  // 함수형 코드로 곱샘 테이블을 만들어 본다
+  def makeRowSeq(row: Int) = {
+    for (col <- 1 to 10) yield {
+      val prod = (row * col).toString
+      val padding = " " * (4 - prod.length)
+      padding + prod
+    }
+  }
+
+  // 하나의 행을 모두 문자열로 결합시킨다.
+  def makeRow(row: Int) = makeRowSeq(row).mkString
+
+  // 표를 한줄에 한 행의 내용을 담고 있는 문자열로 반환한다.
+  def multiTable() = {
+    val tableSeq =
+      for (row <- 1 to 10)
+        yield makeRow(row)
+
+    tableSeq.mkString("\n");
+  }
+
 }
