@@ -44,5 +44,10 @@ object Tutorial008 extends App {
     // 모든 컬렉션에는 filter 가 있음
     val filtered = someNumbers.filter((x: Int) => x > 0)
     println(filtered)
+
+    // 위치 표시자 문법, 파라미터에 대한 위치를 _ 로 표시 할 수 있다,
+    // _ 는 위치 기반이고, 2개가 있다면, 두개의 파라미터를 받는 함수이다.
+    val filtered2 = someNumbers.filter(_ > 0)
+    println(filtered2)
   }
 }
