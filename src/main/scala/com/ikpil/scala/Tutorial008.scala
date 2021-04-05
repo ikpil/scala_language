@@ -7,6 +7,7 @@ object Tutorial008 extends App {
 
   // checkMethod()
   firstClassFunction()
+  checkClosure()
 
   def checkMethod() = {
     val argsV2 = Array(
@@ -76,5 +77,21 @@ object Tutorial008 extends App {
 
     println(s1(4))
     println(s2(4))
+  }
+
+  // 클로져는 함수 리터럴의 본문에 있는 모든 자유 변수에 대한 바인딩을 포획해서
+  // 자유 변수가 없게 닫는 행위에서 따온 말이다. (프로그래밍 스칼라 책에서)
+  def checkClosure() = {
+    println("클로져 체크")
+
+    var more = 1 // more 는 자유 변수이다
+
+    // 자유 변수가 포함된 함수 리터럴을 열린 코드 조각(open term)이라 부른다. 없으면 닫힌 코드 조각
+    val addMore = (x: Int) => x + more
+    println(addMore(10))
+
+    // more 가 캡쳐되어 addMore 함수 객체가 되었으므로, more 를 바꾸면 값이 변경된다.
+    more = 2;
+    println(addMore(10))
   }
 }
