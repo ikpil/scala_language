@@ -8,6 +8,7 @@ object Tutorial008 extends App {
   // checkMethod()
   firstClassFunction()
   checkClosure()
+  specialFunctionCall()
 
   def checkMethod() = {
     val argsV2 = Array(
@@ -94,4 +95,43 @@ object Tutorial008 extends App {
     more = 2;
     println(addMore(10))
   }
+
+  // 특별한 형태의 함수 호출
+  def specialFunctionCall(): Unit = {
+    println("repeat parameter")
+    println("----------------------------------------------")
+
+    // 반복 파라미터는 C++ 의 가변인자랑 비슷한데, 하나의 타입만 된다.
+    repeatParameterFunction("one")
+    repeatParameterFunction("one", "two")
+    repeatParameterFunction("hello", "world!")
+
+    // 배열을 반복 파라미터로 남길 경우, 다음 처림 :_* 를 추가하면 된다
+    val arr = Array("What's", "up", "doc?");
+    repeatParameterFunction(arr: _*) // 이렇게 하면 배열의 원소를 반복파라미터화 해서 전달한다.
+
+
+    // 이름 붙인 인자로, 대개의 경우, 함수 파라미터 목록의 순서로 값을 전달 한다. 하지만 이름 붙이면, 순서와 무관하게
+    // 값을 전달할 수 있다. 대개의 경우, 디폴트 파라미터가 있을 경우, 이름 붙인 인자를 쓰는 경우가 많다.
+    println("named argument")
+    println("----------------------------------------------")
+    println(speed(100, 10))
+    println(speed(time = 10, distance = 100))
+
+    // 디폴트 인자값
+    println("default parameter")
+    println("----------------------------------------------")
+    printTime()
+    printTime(divisor = 1000)
+    printTime(divisor = 1000 * 60, out = Console.err)
+  }
+
+  // 반복 파라미터 함수
+  def repeatParameterFunction(args: String*) = for (arg <- args) println(arg)
+
+  // 이름 붙인 진자
+  def speed(distance: Float, time: Float): Float = distance / time
+
+  def printTime(out: java.io.PrintStream = Console.out, divisor: Int = 1) = out.println("time = " + System.currentTimeMillis() / divisor)
 }
+
