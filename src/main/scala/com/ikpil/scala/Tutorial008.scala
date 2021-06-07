@@ -9,6 +9,7 @@ object Tutorial008 extends App {
   firstClassFunction()
   checkClosure()
   specialFunctionCall()
+  tailRecursive()
 
   def checkMethod() = {
     val argsV2 = Array(
@@ -133,5 +134,27 @@ object Tutorial008 extends App {
   def speed(distance: Float, time: Float): Float = distance / time
 
   def printTime(out: java.io.PrintStream = Console.out, divisor: Int = 1) = out.println("time = " + System.currentTimeMillis() / divisor)
+
+
+  def tailRecursive(): Unit = {
+    println("------------------------------------------------------ tail recursive")
+
+    // 스칼라의 꼬리 호출이 다른 언어와 비슷하다는 것을 배운다.
+    // 꼬리 호출 구조로 재귀 함수를 작성할 경우, 스택 오버플로우 위험에서 벗어날 수 있다
+    // 규칙은 함수의 제일 마지막이 함수 호출만으로 끝나야 한다 예를 들어 return 1 + call() 등은 안된다
+    approximate(10)
+  }
+
+  def approximate(guess: Double): Double = {
+    if (isGoodEnough(guess)) guess
+    else approximate(improve(guess))
+  }
+
+  def isGoodEnough(guess: Double): Boolean = {
+    val condition = guess < 1
+    println("step guess:" + guess + " condition:" + condition)
+    condition
+  }
+  def improve(guess: Double): Double = guess * 0.25f
 }
 
