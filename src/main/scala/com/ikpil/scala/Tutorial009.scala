@@ -1,10 +1,14 @@
 package com.ikpil.scala
 
+import java.io.{File, PrintWriter}
+import java.util.Date
+
 // 흐름제어 추상화, 더블어 커링과 이름에 의한 호출 파라미터를 살펴 본다
 object Tutorial009 extends App {
 
   higherOrderFunction()
   curryingTest()
+  flowControl()
 
   def containNeg(nums: List[Int]): Boolean = {
     for (num <- nums)
@@ -47,6 +51,22 @@ object Tutorial009 extends App {
     val onePlus = curriedSum(1) _
     val a3 = onePlus(4)
     println("curriedSum: " + a3)
+  }
+
+  def withPrintWriter(file: File, op: PrintWriter => Unit): Unit = {
+    val writer = new PrintWriter(file)
+    try {
+      op(writer)
+    } finally {
+      writer.close()
+    }
+  }
+
+  def flowControl(): Unit = {
+    withPrintWriter(
+      new File("tmp.date.txt"),
+      writer => writer.println(new Date)
+    )
   }
 }
 

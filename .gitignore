@@ -5,3 +5,4 @@ target
 .gradle
 .idea
 build
+tmp.*.txt
