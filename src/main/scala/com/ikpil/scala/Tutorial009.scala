@@ -5,10 +5,12 @@ import java.util.Date
 
 // 흐름제어 추상화, 더블어 커링과 이름에 의한 호출 파라미터를 살펴 본다
 object Tutorial009 extends App {
+  var assertionsEnable: Boolean = false
 
   higherOrderFunction()
   curryingTest()
   flowControl()
+  callParametersByName()
 
   def containNeg(nums: List[Int]): Boolean = {
     for (num <- nums)
@@ -62,11 +64,60 @@ object Tutorial009 extends App {
     }
   }
 
+  def curriedWithPrintWriter(file: File)(op: PrintWriter => Unit): Unit = {
+    val writer = new PrintWriter(file)
+    try {
+      op(writer)
+    } finally {
+      writer.close()
+    }
+  }
+
   def flowControl(): Unit = {
+    // 일반적인 방법
     withPrintWriter(
       new File("tmp.date.txt"),
       writer => writer.println(new Date)
     )
+
+    // 커링을 사용한 방법
+    val a1 = curriedWithPrintWriter(new File("tmp.date2.txt")) _
+    a1(writer => writer.println(new Date))
+
+    // 커링을 중괄호로 묵어서 더 편하게 사용한 방법
+    val f3 = new File("tmp.date3.txt")
+    curriedWithPrintWriter(f3) {
+      writer => writer.println(new Date)
+    }
+  }
+
+
+  // 이름에 의한 호출
+  def callParametersByName(): Unit = {
+    val x = 5
+
+    // myAssert 와 byNameAssert 의 호출 형태는 동일하나, 작동 방식에 큰 차이를 보인다
+    try {
+      myAssert(x / 0 == 0)
+    } catch {
+      case exception: Exception => {
+        println(exception)
+      }
+    }
+
+    byNameAssert(x / 0 == 0)
+  }
+
+  // myAssert 는 1. x / 0 == 0 을 평가한 뒤 2. myAssert 를 호출한다.
+  def myAssert(predicate: Boolean): Unit = {
+    if (assertionsEnable && !predicate)
+      throw new AssertionError()
+  }
+
+  // byNameAssert 는 1. byNameAssert 호출 후 2. 필요할 때 predicate 서플라이 함수를 호출 한다.
+  def byNameAssert(predicate: => Boolean): Unit = {
+    if (assertionsEnable && !predicate)
+      throw new AssertionError()
   }
 }
 
