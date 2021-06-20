@@ -1,0 +1,19 @@
+group 'com.ikpil.scala'
+
+apply plugin: 'idea'
+apply plugin: 'scala'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.13.+'
+    testImplementation 'org.scalatest:scalatest_2.13:+'
+    testImplementation 'junit:junit:4.13'
+}
+
+application {
+    mainClass = 'com.ikpil.scala.App'
+}
