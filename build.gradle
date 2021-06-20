@@ -15,5 +15,5 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.ikpil.scala.App'
+    mainClass = 'com.ikpil.scala.TutorialApp'
 }
