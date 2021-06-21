@@ -4,7 +4,7 @@ import java.io.{File, PrintWriter}
 import java.util.Date
 
 // 흐름제어 추상화, 더블어 커링과 이름에 의한 호출 파라미터를 살펴 본다
-object Tutorial009 extends App {
+object Chapter009 extends App {
   var assertionsEnable: Boolean = false
 
   higherOrderFunction()

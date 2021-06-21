@@ -3,7 +3,7 @@ package com.ikpil.scala
 import com.ikpil.scala.sample.ChecksumAccumulator
 
 // 이 튜토리얼은 클래스와 객체에 대해서 알아 본다
-object Tutorial004 extends App {
+object Chapter004 extends App {
   sampleClass()
   sampleStandalone()
 

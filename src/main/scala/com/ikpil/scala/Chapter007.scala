@@ -4,7 +4,7 @@ import java.io.{File, IOException}
 import scala.io.StdIn.readLine
 
 // 스칼라의 내장 제어 구문에 대해서 배워본다
-object Tutorial007 extends App {
+object Chapter007 extends App {
   //  differentIf()
   //  checkWhile(10, 30)
   //  checkDoWhile()
