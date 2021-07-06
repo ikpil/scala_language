@@ -9,4 +9,9 @@ class LineElement(s: String) extends ArrayElement(Array(s)) {
 
   // 스칼라에서는 override 유무가 필수이므로, 깨지기 쉬운 기반 클래스(fragile base class) 문제를 조금이나마 해소시켜준다
   //override def abcde: Int = 2
+
+  override def demo(): Unit = {
+    println("LineElement's demo")
+  }
+
 }

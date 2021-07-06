@@ -1,6 +1,6 @@
 package com.ikpil.scala
 
-import com.ikpil.scala.sample.{ArrayElement, Element, LineElement}
+import com.ikpil.scala.sample.{ArrayElement, Element, LineElement, UniformElement}
 
 /** *
  * 챕터 10에서는 상속과 구성에 대해서 다룬다
@@ -20,5 +20,16 @@ object Chapter010 extends App {
     // 1줄짜리 엘러먼트
     val a3 = new LineElement("hehe")
     println(s"line element - w:${a3.width} h:${a3.height}")
+
+    val e3: Element = new UniformElement('x', 2, 3);
+    println(s"uniform element - w:${e3.width} h:${e3.height}")
+
+    demo(a1)
+    demo(a3)
+    demo(e3)
+  }
+
+  def demo(e: Element): Unit = {
+    e.demo()
   }
 }
