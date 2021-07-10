@@ -1,7 +1,9 @@
 package com.ikpil.scala.sample
 
 // 슈퍼클래스의 생성자 호출을 보여준다.
-class LineElement(s: String) extends ArrayElement(Array(s)) {
+class LineElement(s: String) extends Element {
+  val contents: Array[String] = Array(s);
+
   // width, height 에 override
   override def width: Int = s.length
 
